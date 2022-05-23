@@ -1,8 +1,7 @@
 # InfluxDB custom component for ESPHome
 Credit goes to la7dja @ https://github.com/la7dja for this great template. I used his existing UDP version to use the ESPHome http_request module.
 
-This custom component allows you to send sensor updates from ESPHome to an
-InfluxDB database<del>with UDP</del>.
+This custom component allows you to send sensor updates from ESPHome to an InfluxDB database.
 
 
 ## Installation
@@ -40,8 +39,10 @@ influxdb:
 
 * **host** (Required, string): Hostname or IP for the InfluxDB server
 * **port** (Optional, int): Port number the InfluxDB server is listening on. Defaults to <del>8089</del> 8086.
+* **org** (Required, string): Org name for InfluxDB
 * **username** (Optional, string): Username for InfluxDB Authentication
 * **password** (Optional, string): Password for InfluxDB Authentication
+* **api_token** (Optional, string): Token for InfluxDB Authentication
 * **database** (Optional, default = 'esphome'): Auto create Database if does not exist.
 * <del>**max\_packet_size** (Optional, int): Max size of UDP packets. Defaults to 500.</del>
 * <del>**send_timeout** (Optional, time): Time to wait before sending UDP packets which have not been filled to max size. Defaults to 100ms.</del>

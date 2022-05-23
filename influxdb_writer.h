@@ -26,6 +26,7 @@ namespace esphome
       void setup() override;
       void loop() override;
       void dump_config() override;
+      float get_setup_priority() const;
 #ifdef USE_BINARY_SENSOR
       void on_sensor_update(binary_sensor::BinarySensor *obj, std::string measurement, std::string tags, bool state);
 #endif
@@ -39,9 +40,11 @@ namespace esphome
       void set_host(std::string host) { this->host = host; };
       void set_port(uint16_t port) { this->port = port; };
 
+      void set_token_header(std::string token_header) { this->token_header = token_header; };
       void set_username(std::string username) { this->username = username; };
       void set_password(std::string password) { this->password = password; };
       void set_database(std::string database) { this->database = database; };
+      void set_org(std::string org) { this->org = org; };
       void set_send_timeout(int timeout) { send_timeout = timeout; };
 
       void set_tags(std::string tags) { this->tags = tags; };
@@ -50,13 +53,16 @@ namespace esphome
 
     protected:
       void write(std::string measurement, std::string tags, const std::string value, bool is_string);
+      std::list<http_request::Header> get_http_headers();
 
       uint16_t port;
       std::string host;
 
+      std::string token_header;
       std::string username;
       std::string password;
       std::string database;
+      std::string org;
       std::string service_url;
 
       int send_timeout;
